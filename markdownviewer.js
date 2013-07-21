@@ -24,12 +24,12 @@
 	window.onresize = showOutline;
 
 	var lastText = null;
-
 	function updateMarkdown(text) {
 		if (text !== lastText) {
 			marked.setOptions({
 				gfm: true,
 				pedantic: false,
+				tables: true,
 				sanitize: false
 			});
 			lastText = text;
@@ -65,14 +65,14 @@
 				for (var j = 0; j < levelCount; j++) {
 					arrOutline.push('</ul>');
 				}
-			};
+			}
 			arrOutline.push('<li>');
 			arrOutline.push('<a href="#' + id + '">' + headerText + '</a>');
 			arrOutline.push('</li>');
 			lastLevel = level;
 			id++;
 		}
-		arrOutline.push('</ul>')
+		arrOutline.push('</ul>');
 		var outline = document.getElementById('markdown-outline');
 		if(arrOutline.length > 2){
 			outline.innerHTML = arrOutline.join('');
